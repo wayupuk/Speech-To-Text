@@ -41,15 +41,22 @@ finetuning code will be as follow in finetune_whisper.ipynb
 Second model
 Thonburian whisper from this link https://github.com/biodatlab/thonburian-whisper
 ```bash
-git clone https://github.com/biodatlab/thonburian-whisper model
+# git clone https://github.com/biodatlab/thonburian-whisper model
+huggingface-cli download biodatlab/whisper-th-medium-combined --repo-type model --local-dir model/thonburian
+
 ```
+
+
+
+
+
 ```python
 then run this code to run a model
 
 import torch
 from transformers import pipeline
 
-MODEL_NAME = "biodatlab/whisper-th-medium-combined"  # see alternative model names below
+MODEL_NAME = "model/thonburian"  # see alternative model names below
 lang = "th"
 device = 0 if torch.cuda.is_available() else "cpu"
 pipe = pipeline(
@@ -74,4 +81,8 @@ the example of path directory
     |--- whisper-large-v3-turbo
     |--- finetune_whisper.ipynb
     |--- model ## store honburain whisper
+        |--- thonburian
 ```
+
+
+
